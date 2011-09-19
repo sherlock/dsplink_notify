@@ -263,6 +263,10 @@ Int TSKMESSAGE_execute (TSKMESSAGE_TransferInfo * info)
          (   ((info->numTransfers == 0) || (i < info->numTransfers))
           && (status == SYS_OK)) ;
          i++) {
+	//shi
+	dprintf(" Receive a message \n");
+	// 
+
         /* Receive a message */
         status = MSGQ_get (info->localMsgq, &msg, SYS_FOREVER) ;
         if (status == SYS_OK) {
