@@ -291,6 +291,22 @@ extern  LINKCFG_Object LINKCFG_config ;
  *  @see    None
  *  ----------------------------------------------------------------------------
  */
+ 
+ 
+ Void LogCallback (Uint32 event, Pvoid arg, Pvoid info) 
+{ 
+  static char PrintBuffer[512]; 
+  // get data from DSP: 
+  int status = PROC_read(0, (int)info, 512, PrintBuffer); 
+  if (status == DSP_SOK) 
+    printf ("DSP-LOG: %s", PrintBuffer); 
+  else 
+    printf ("DEBUG: Unable to read dsp-mem %p\n", info); 
+  // notify the DSP-side: 
+  NOTIFY_notify (0, 0, 6, 0); 
+} 
+ 
+ 
 STATIC
 NORMAL_API
 DSP_STATUS
@@ -402,6 +418,13 @@ MESSAGE_Create (IN Char8 * dspExecutable,
             MESSAGE_1Print ("PROC_load () failed. Status = [0x%x]\n", status) ;
         }
     }
+
+
+//SHI
+
+ NOTIFY_register (0, 0, 6, LogCallback, 0); 
+//
+
 
      /*
       *  Start execution on DSP.

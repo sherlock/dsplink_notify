@@ -101,6 +101,12 @@ extern  LINKCFG_Object LINKCFG_config ;
  *  @modif  None
  *  ============================================================================
  */
+ 
+
+ 
+ 
+ 
+ 
 int main (int argc, char ** argv)
 {
     Char8 * dspExecutable    = NULL ;
@@ -158,6 +164,10 @@ int main (int argc, char ** argv)
                 strNumIterations = "10000" ;
             }
 #endif
+
+	   
+
+
             MESSAGE_Main (dspExecutable, strNumIterations, strProcessorId) ;
         }
     }
