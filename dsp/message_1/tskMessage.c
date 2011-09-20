@@ -237,7 +237,7 @@ Int TSKMESSAGE_execute (TSKMESSAGE_TransferInfo * info)
     Int         status = SYS_OK ;
     MSGQ_Msg    msg ;
     Uint32      i ;
-
+//	dprintf("TSK execute start\n");
     /* Allocate and send the message */
     status = MSGQ_alloc (SAMPLE_POOL_ID, &msg, APP_BUFFER_SIZE) ;
 
@@ -264,7 +264,7 @@ Int TSKMESSAGE_execute (TSKMESSAGE_TransferInfo * info)
           && (status == SYS_OK)) ;
          i++) {
 	//shi
-	dprintf(" Receive a message \n");
+
 	// 
 
         /* Receive a message */
@@ -315,7 +315,7 @@ Int TSKMESSAGE_execute (TSKMESSAGE_TransferInfo * info)
             SET_FAILURE_REASON (status) ;
         }
     }
-
+	dprintf("TSK end`\n");
     return status ;
 }
 
